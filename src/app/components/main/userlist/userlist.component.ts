@@ -1,0 +1,43 @@
+import { Component, Output, ViewChild,EventEmitter } from '@angular/core';
+import { ApiService } from '../../../services/apiService/api.service';
+
+
+@Component({
+  selector: 'app-userlist',
+  standalone: true,
+  imports: [],
+  templateUrl: './userlist.component.html',
+  styleUrl: './userlist.component.scss'
+})
+export class UserlistComponent {
+
+  activeUsers: any[] = [];
+
+  selectUser:String | undefined;
+
+  constructor(private api:ApiService){}
+
+  ngOnInit(): void {
+    this.getActiveUserList();
+  }
+
+  getActiveUserList(){
+    this.api.getActiveUsers().subscribe({
+      next: (data: any) => {
+        this.activeUsers = data;
+      },
+      error: (error: any) => {
+        console.error('Error fetching users:', error);
+      }
+    })
+  }
+ 
+
+  @Output() userSelected = new EventEmitter<string>();
+  onUserSelect(user:string):void{
+    this.selectUser=user;
+    console.log("selectd user "+ this.selectUser);
+    this.userSelected.emit(user); // Emit the selected user
+  }
+
+}

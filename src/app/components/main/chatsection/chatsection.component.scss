@@ -1,0 +1,15 @@
+.message-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Ensure the container scrolls if the messages overflow */
+    height: 80vh; /* Adjust height as needed */
+  }
+  
+  .message-wrapper {
+    margin-bottom: 1rem; /* Space between messages */
+  }
+  
+  .input-container {
+    margin-top: auto; /* Stick to the bottom of the container */
+  }
+  
