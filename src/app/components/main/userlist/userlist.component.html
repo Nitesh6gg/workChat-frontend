@@ -1,32 +1,13 @@
 <div class="flex flex-col divide-y h-full overflow-y-auto -mx-4">
-  
-    <div class="flex flex-row items-center px-4 py-2 relative">
-      <div class="absolute text-xs text-gray-500 right-0 top-0 mr-4 mt-1">2 hours ago</div>
-      <!-- <div class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-pink-300 font-bold flex-shrink-0">
-        T
-      </div> -->
-      <div class="relative">
-        <img class="w-14 h-10 rounded-full" src="/assets/profile.jpg" alt="">
-        <span
-          class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
-      </div>
-      <div class="flex flex-col flex-grow ml-3">
-        <div class="text-sm font-medium">Flo Steinle</div>
-        <div class="text-xs truncate w-40">Good after noon! how can i help you?</div>
-      </div>
-      <div class="flex-shrink-0 ml-2 self-end mb-1">
-        <span
-          class="flex items-center justify-center h-5 w-5 bg-cyan-500 text-white text-xs rounded-full">3</span>
-      </div>
-    </div>
-   
+
     <div class="flex flex-col space-y-2 px-4 py-2">
       @for (item of activeUsers; track $index) {
         <div class="flex items-center space-x-3 cursor-pointer" (click)="onUserSelect(item.username)">
           <!-- Profile picture or first letter of username -->
 
           <div class="relative">
-            <div class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-white font-bold">{{item.username.charAt(0)}}
+            <div class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-white font-bold">{{ item.username.charAt(0) | titlecase }}
+
               <span class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
             </div>
           </div>

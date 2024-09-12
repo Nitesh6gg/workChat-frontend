@@ -65,10 +65,19 @@ export class ChatsectionComponent {
      // Add the sent message to the local messages array
     this.messages.push({sender: String(this.username),content: this.messageInput,timestamp: new Date().toLocaleTimeString()});
       this.messageInput = ''; // Clear input after sending
+      this.playSendSound();
     } else {
       console.warn('Cannot send message without a recipient or content');
     }
   }
+
+  
+playSendSound(): void {
+  const audio = new Audio('src/assets/msgSend.mp3'); 
+  audio.play().catch(error => console.error('Error playing sound:', error));
+}
+
+
 
 
   formatTime(timestamp: string): string {

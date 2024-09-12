@@ -5,6 +5,7 @@ import { Subject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WebSocketService {
+  [x: string]: any;
   private socket!: WebSocket;
   private subject: Subject<MessageEvent> | undefined;
 

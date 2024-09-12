@@ -1,11 +1,12 @@
 import { Component, Output, ViewChild,EventEmitter } from '@angular/core';
 import { ApiService } from '../../../services/apiService/api.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-userlist',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './userlist.component.html',
   styleUrl: './userlist.component.scss'
 })
