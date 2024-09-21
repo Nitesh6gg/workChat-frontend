@@ -29,7 +29,7 @@ export class MainComponent {
 
   constructor(private webSocketService:WebSocketService,private router:Router){}
 
-  username=localStorage.getItem('userEmail');
+  username=localStorage.getItem('username');
   
   ngOnInit(): void {
 

@@ -1,44 +1,50 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink, RouterModule,Router } from '@angular/router';
-
+import { RouterLink, RouterModule, Router } from '@angular/router';
+import { ApiService } from '../../services/apiService/api.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule,RouterModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private router:Router) {
+  constructor(private fb: FormBuilder, private router: Router, private apiService: ApiService) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]], 
-      password: ['', [Validators.required,Validators.minLength(6)]],  
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form Submitted!', this.loginForm.value);
-
-      // Retrieve only the email value
-      const email = this.loginForm.get('email')?.value;
-
-      // Store the email in local storage
-      localStorage.setItem('userEmail', email);
-
-      console.log('Email stored in local storage:', email);
-  
-      this.router.navigate(['/home']);
-      
+      this.apiService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).subscribe({
+        next: (response: any) => {
+          if (response.httpStatus === 'OK') {
+            const user = response.user;
+            
+            // Store user details in local storage
+            localStorage.setItem('userId', user.id);
+            localStorage.setItem('username', user.username);
+            localStorage.setItem('fullName', user.fullName);
+            localStorage.setItem('email', user.email);
+            this.router.navigate(['/home']);
+          } else {
+            console.error('Login failed', response.message);
+          }
+        },
+        error: (error: any) => {
+          console.error('Login failed', error);
+        }
+      });
     } else {
       console.log('Form is invalid');
     }
   }
-
-
 }

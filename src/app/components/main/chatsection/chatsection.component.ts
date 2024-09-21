@@ -22,7 +22,7 @@ export class ChatsectionComponent {
 
   constructor(private webSocketService:WebSocketService,private router:Router){}
 
-  username=localStorage.getItem('userEmail');
+  username=localStorage.getItem('username');
   
   ngOnInit(): void {
 
@@ -76,9 +76,6 @@ playSendSound(): void {
   const audio = new Audio('src/assets/msgSend.mp3'); 
   audio.play().catch(error => console.error('Error playing sound:', error));
 }
-
-
-
 
   formatTime(timestamp: string): string {
     return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
