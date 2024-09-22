@@ -1,4 +1,4 @@
-<div class="flex flex-row items-center bg-white py-4 px-6 rounded-2xl shadow">
+<div class="sticky top-0 z-50 flex items-center bg-white py-4 px-6 rounded-2xl shadow w-full">
 
   <div class="flex items-center justify-center h-10 w-10 rounded-full text-pink-100">
     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-white font-bold">
@@ -72,7 +72,7 @@
               <div class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-tr-xl rounded-bl-xl rounded-br-xl">
                 <div>{{item.content}}</div>
                 <div class="absolute text-xs bottom-0 right-0 -mb-5 mr-2 text-gray-500">
-                  {{ item.timestamp }}
+                  {{ item.timestamp | date:'shortTime'}}
                 </div>
     
               </div>
@@ -158,7 +158,7 @@
   </div>
 </div>
 
-<div class="flex flex-row items-center ">
+<div class="sticky bottom-0 z-50 flex flex-row items-center w-full bg-gray-100 py-2 px-4">
   <div class="flex flex-row items-center w-full border rounded-3xl h-12 px-2">
     <button class="flex items-center justify-center h-10 w-10 text-gray-400 ml-1">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

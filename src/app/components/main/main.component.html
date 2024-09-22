@@ -51,10 +51,10 @@
             <div class="absolute text-xs text-gray-500 right-0 top-0 mr-4 mt-1">5 min</div>
             <div
               class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-pink-300 font-bold flex-shrink-0">
-              T
+              AI
             </div>
             <div class="flex flex-col flex-grow ml-3">
-              <div class="text-sm font-medium">Cuberto</div>
+              <div class="text-sm font-medium">Chat with AI</div>
               <div class="text-xs truncate w-40">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
                 doloribus?</div>
             </div>
@@ -83,7 +83,7 @@
 
 
   <!-- Chat Section -->
-  <div class="flex flex-col h-full w-full bg-gray-100 px-4 py-6 rounded-e-2xl">
+  <div class="flex flex-col h-full w-full overflow-auto bg-gray-100 px-4 py-6 rounded-e-2xl">
     <ng-container *ngIf="selectedUser; else noUserSelected">
       <!-- If a user is selected, show the chat section -->
       <app-chatsection [selectedUser]="selectedUser"></app-chatsection>

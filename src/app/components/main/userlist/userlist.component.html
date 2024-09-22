@@ -8,7 +8,9 @@
           <div class="relative">
             <div class="flex items-center justify-center h-10 w-10 rounded-full bg-pink-500 text-white font-bold">{{ item.username.charAt(0) | titlecase }}
 
-              <span class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+              @if(item.online){
+                <span class="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+              }
             </div>
           </div>
     

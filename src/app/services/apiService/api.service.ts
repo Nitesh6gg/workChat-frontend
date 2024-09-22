@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -16,6 +17,15 @@ export class ApiService {
 
   getActiveUsers(){
     return this.http.get(`${environment.apiUrl}/users/active`);
+  }
+
+  getAllUser(userId:any){
+    return this.http.get(`${environment.apiUrl}/users?userId=${userId}`);
+  }
+
+  //messages
+  getChatHistory(senderId: any, recipientId: any): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/chat?senderId=${senderId}&recipientId=${recipientId}`);
   }
 
 

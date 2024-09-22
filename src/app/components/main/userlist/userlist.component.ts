@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 export class UserlistComponent {
 
+  userId=localStorage.getItem('userId');
+
   activeUsers: any[] = [];
 
   selectUser:String | undefined;
@@ -19,11 +21,23 @@ export class UserlistComponent {
   constructor(private api:ApiService){}
 
   ngOnInit(): void {
-    this.getActiveUserList();
+   // this.getActiveUserList();
+    this.getAllUsers();
   }
 
   getActiveUserList(){
     this.api.getActiveUsers().subscribe({
+      next: (data: any) => {
+        this.activeUsers = data;
+      },
+      error: (error: any) => {
+        console.error('Error fetching users:', error);
+      }
+    })
+  }
+
+  getAllUsers(){
+    this.api.getAllUser(this.userId).subscribe({
       next: (data: any) => {
         this.activeUsers = data;
       },
