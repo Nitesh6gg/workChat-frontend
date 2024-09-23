@@ -71,10 +71,7 @@
               </div>
               <div class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-tr-xl rounded-bl-xl rounded-br-xl">
                 <div>{{item.content}}</div>
-                <div class="absolute text-xs bottom-0 right-0 -mb-5 mr-2 text-gray-500">
-                  {{ item.timestamp | date:'shortTime'}}
-                </div>
-    
+                <div class="absolute text-xs bottom-0 right-0 -mb-5 mr-2 text-gray-500">{{ item.timestamp}}</div>
               </div>
             </div>
           </div>
@@ -88,6 +85,7 @@
               <div
                 class="relative mr-3 text-sm bg-blue-500 text-white py-2 px-4 shadow rounded-tl-xl rounded-tr-xl rounded-bl-xl ">
                 <div class="">{{item.content}}</div>
+                <div class="absolute text-xs bottom-0 right-0 -mb-5 mr-2 text-gray-500">{{ item.timestamp}}</div>
               </div>
             </div>
           </div>
